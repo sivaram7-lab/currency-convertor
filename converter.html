@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter - Z-Speed</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Z-Speed</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="converter.html" class="active">Converter</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html" class="btn btn-outline">Sign Up</a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" title="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>ForexPro</span>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose" title="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="converter.html" class="active">Converter</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <!-- Converter Section -->
+    <section class="container section">
+        <h2>Currency Converter</h2>
+
+        <div class="converter-container">
+            <!-- Converter Box -->
+            <div class="converter-box">
+                <div class="converter-header">
+                    <h3>Convert</h3>
+                    <i class="fas fa-sync-alt converter-sync-icon"></i>
+                </div>
+
+                <div class="amount-input">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" value="1" min="0">
+                </div>
+
+                <div class="currency-selectors">
+                    <div class="currency-select">
+                        <label for="from-currency">From</label>
+                        <div class="select-box" id="from-currency-select">
+                            <img src="https://flagcdn.com/w40/us.png" alt="USD Flag">
+                            <span>USD - US Dollar</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="currency-dropdown" id="from-currency-dropdown">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="swap-button">
+                        <button onclick="swapCurrencies()" title="Swap currencies">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+
+                    <div class="currency-select">
+                        <label for="to-currency">To</label>
+                        <div class="select-box" id="to-currency-select">
+                            <img src="https://flagcdn.com/w40/eu.png" alt="EUR Flag">
+                            <span>EUR - Euro</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="currency-dropdown" id="to-currency-dropdown">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="convertCurrency()">Convert</button>
+
+                <div class="conversion-result">
+                    <h3 id="conversion-result">1 USD = 0.85 EUR</h3>
+                    <p id="conversion-time">Last updated: Just now</p>
+                </div>
+            </div>
+
+            <!-- Chart Box -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Exchange Rate History</h3>
+                    <div class="time-filters">
+                        <button class="active">1D</button>
+                        <button>1W</button>
+                        <button>1M</button>
+                        <button>1Y</button>
+                        <button>Max</button>
+                    </div>
+                </div>
+                <canvas id="exchangeChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Rates Table -->
+        <h3 class="live-exchange-rates-title">Live Exchange Rates</h3>
+        <div class="rates-table-container">
+            <table class="rates-table">
+                <thead>
+                    <tr>
+                        <th>Currency</th>
+                        <th>Code</th>
+                        <th>Rate</th>
+                        <th>Change (24h)</th>
+                    </tr>
+                </thead>
+                <tbody id="rates-table-body">
+                    <!-- Rates will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Z-Speed</h3>
+                <p>Your trusted partner for currency conversion and exchange rate information.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="converter.html">Converter</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@Zspeed.com</li>
+                    <li><i class="fas fa-phone"></i> +91 12345875467</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Financial Street, Hyderabad, Ind</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Z-Speed. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
