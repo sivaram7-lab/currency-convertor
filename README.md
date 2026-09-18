@@ -1,4 +1,4 @@
-# ForexPro Currency Converter
+#Z-Speed - Currency Converter
 
 A responsive currency converter website with real-time exchange rates and historical data.
 
